@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.navbar {
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar__conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  gap: 16px;
+}
+
+.navbar__marca {
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.navbar a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
