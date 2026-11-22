@@ -1,16 +1,53 @@
+:root {
+  --laranja: #ff4d1c;
+  --laranja-escuro: #e03d10;
+  --rosa-aviso: #ffe4df;
+  --borda-aviso: #f5b5ad;
+  --cinza-campo: #ebebeb;
+  --cinza-borda: #d9d9d9;
+  --texto: #1f1f1f;
+  --texto-suave: #666666;
+  --perigo: #c62828;
+  --fundo: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  font-weight: 400;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.5;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px 16px;
+h1 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--laranja);
 }
 
+h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+a {
+  color: var(--laranja);
+}
+
+/* Navbar */
 .navbar {
-  border-bottom: 1px solid #ccc;
+  background: var(--laranja);
 }
 
 .navbar__conteudo {
@@ -18,15 +55,204 @@ body {
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 8px;
 }
 
 .navbar__marca {
-  font-weight: bold;
   margin-right: auto;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
 }
 
 .navbar a.active {
-  font-weight: bold;
-  text-decoration: underline;
+  background: #fff;
+  color: var(--laranja);
+}
+
+/* Conteúdo */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.cabecalho-pagina {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botões */
+.botao {
+  display: inline-block;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botao-primario {
+  background: var(--laranja);
+  color: #fff;
+}
+
+.botao-primario:hover:not(:disabled) {
+  background: var(--laranja-escuro);
+}
+
+.botao-secundario {
+  background: #fff;
+  color: var(--laranja);
+  border-color: var(--laranja);
+}
+
+.botao-secundario:hover {
+  background: var(--rosa-aviso);
+}
+
+.botao-perigo {
+  background: var(--perigo);
+  color: #fff;
+}
+
+/* Mensagens */
+.mensagem {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: var(--cinza-campo);
+}
+
+.mensagem-erro {
+  background: var(--rosa-aviso);
+  border: 1px solid var(--borda-aviso);
+  color: var(--perigo);
+}
+
+/* Filtro e campos */
+.filtro,
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+input {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--cinza-campo);
+  font: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--laranja);
+  background: #fff;
+}
+
+.formulario {
+  max-width: 480px;
+}
+
+/* Tabela */
+.tabela-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--laranja);
+  color: #fff;
+  text-align: left;
+  font-weight: 700;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: var(--rosa-aviso);
+}
+
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+td.acoes {
+  white-space: nowrap;
+}
+
+/* Detalhe */
+.detalhe {
+  margin: 0 0 1.5rem;
+}
+
+.detalhe dt {
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--laranja);
+}
+
+.detalhe dd {
+  margin: 0.15rem 0 0;
+}
+
+/* Celular */
+@media (max-width: 600px) {
+  .navbar__conteudo {
+    flex-wrap: wrap;
+  }
+
+  .navbar__marca {
+    flex-basis: 100%;
+  }
+
+  td.acoes {
+    white-space: normal;
+  }
 }
