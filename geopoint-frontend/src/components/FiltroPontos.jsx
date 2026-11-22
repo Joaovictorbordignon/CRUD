@@ -1,4 +1,4 @@
-export default function Botao({ children, onClick, type = 'button', className = '' }) {
+export default function FiltroPontos ({ valor, onMudar }) {
     return (
         <div className="filtro">
             <label htmlFor="filtro">Filtrar por nome ou descrição</label>
@@ -7,6 +7,7 @@ export default function Botao({ children, onClick, type = 'button', className = 
             type="text"
             value={valor}
             onChange={(e) => onMudar(e.target.value)}
+            placeholder="Digite para filtrar"
             />
         </div>
     );
