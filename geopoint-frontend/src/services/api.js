@@ -26,4 +26,4 @@ export const atualizarPonto = (id, ponto) =>
   requisicao(`/api/points/${id}`, { method: 'PUT', body: JSON.stringify(ponto) });
 
 export const excluirPonto = (id) =>
-  requisicao(`/api/points/${id}`, { method: 'DELETE' });
+  requisicao(`/api/points/${id}`, { method: 'DELETE' });  

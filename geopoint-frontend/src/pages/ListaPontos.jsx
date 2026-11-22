@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { listarPontos } from "../services/api";
-import FiltroPontos from "../components/Filtro";
+import { listarPontos, excluirPonto } from "../services/api";
+import FiltroPontos from "../components/FiltroPontos";
 import Mensagem from "../components/Mensagem";
-import TabelaPontos from "../components/Tabela";
+import TabelaPontos from "../components/TabelaPontos";
 
 
 export default function ListaPontos() {
@@ -26,7 +26,7 @@ export default function ListaPontos() {
     carregar();
   }, []);
 
-  async function excluirPonto(ponto) {
+  async function excluir(ponto) {
     if (!window.confirm(`Deseja realmente excluir o ponto "${ponto.name}"?`)) return;
     
     try {
@@ -37,14 +37,14 @@ export default function ListaPontos() {
       setErroExcluir(`Não foi possível excluir o ponto "${ponto.name}".`);
     }
   }
-const textoFiltro = filtro.trim().toLowerCase();
+  const textoFiltro = filtro.trim().toLowerCase();
   const pontosFiltrados = pontos.filter((p) =>
-    p.name.toLowerCase.includes(textoFiltro));
+    p.name.toLowerCase().includes(textoFiltro));
 
   return(
     <section>
       <div className="cabecalho-pagina">
-        <h1>pontos geograficos</h1>
+        <h1>Pontos geográficos</h1>
         <Link className="botao botao-primario" to="/pontos/novo">
         Novo ponto
         </Link>
@@ -55,7 +55,7 @@ const textoFiltro = filtro.trim().toLowerCase();
       {!carregando && !erro && (
         <>
           <FiltroPontos valor={filtro} onMudar={setFiltro} />
-          {erroExclusao && <Mensagem tipo="erro">{erroExclusao}</Mensagem>}
+          {erroExcluir && <Mensagem tipo="erro">{erroExcluir}</Mensagem>}
           {pontosFiltrados.length === 0 ? (
             <Mensagem>Nenhum ponto encontrado.</Mensagem>
           ) : (
@@ -67,8 +67,3 @@ const textoFiltro = filtro.trim().toLowerCase();
   );
 }
   
-
-  if (carregando) return <Mensagem>Carregando...</Mensagem>;
-  if (erro) return <Mensagem tipo="erro">{erro}</Mensagem>;
-  if (pontos.length === 0) return <Mensagem>Nenhum ponto encontrado.</Mensagem>;
-  return <TabelaPontos pontos={pontos} onExcluir={() => {}} />;
