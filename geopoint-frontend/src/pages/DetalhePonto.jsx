@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { buscarPonto, excluirPonto} from "../services/api";
-import botao from "../components/Botao";
-import mensagem from "../components/Mensagem";
+import { buscarPonto, excluirPonto } from "../services/api";
+import Botao from "../components/Botao";
 import Mensagem from "../components/Mensagem";
 
 
