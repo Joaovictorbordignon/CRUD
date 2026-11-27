@@ -1,6 +1,6 @@
 # GeoPoint - CRUD de Pontos Geográficos
 
-**Aluno(s):** SEU NOME
+**Alunos:** João Victor Bordignon e João Rafael Reis
 **Disciplina:** Desenvolvimento Frontend - Trabalho G2
 **Tecnologia:** React (Vite + React Router)
 
